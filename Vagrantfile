@@ -14,6 +14,11 @@ Vagrant.configure("2") do |config|
     prl.check_guest_tools = true
     prl.update_guest_tools = true
   end
+  config.vm.provider "hyperv" do |hv|
+    hv.cpus = Settings["cpus"]
+    hv.memory = Settings["memory"]
+    hv.maxmemory = Settings["memory"] * 2
+  end
 
   config.vm.define :devbox do |cfg|
     cfg.vm.hostname = "devbox"
